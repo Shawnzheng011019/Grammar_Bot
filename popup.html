@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GrammarBot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>GrammarBot</h1>
+    <div class="settings">
+      <h2>API Key</h2>
+      <div class="api-key-container">
+        <input type="password" id="api-key" placeholder="Enter your OpenAI API key">
+        <button id="save-api-key">Save</button>
+      </div>
+      <div id="api-key-status"></div>
+    </div>
+    <div class="mode-selector">
+      <h2>Correction Modes</h2>
+      <div class="modes">
+        <button class="mode-btn active" data-mode="grammar">Grammar Check</button>
+        <button class="mode-btn" data-mode="shorten">Shorten</button>
+        <button class="mode-btn" data-mode="expand">Expand</button>
+        <button class="mode-btn" data-mode="chinglish">Detect Chinglish</button>
+        <button class="mode-btn" data-mode="tone">Change Tone</button>
+      </div>
+      <div class="tone-options" style="display: none;">
+        <button class="tone-btn" data-tone="professional">Professional</button>
+        <button class="tone-btn" data-tone="concise">Concise</button>
+        <button class="tone-btn" data-tone="confident">Confident</button>
+        <button class="tone-btn" data-tone="friendly">Friendly</button>
+      </div>
+    </div>
+    <div class="instructions">
+      <p>Right-click on any text input or selection to use GrammarBot</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

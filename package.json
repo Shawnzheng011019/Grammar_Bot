@@ -1,0 +1,23 @@
+{
+  "name": "grammarbot",
+  "version": "1.0.0",
+  "description": "English grammar checking and rewriting browser extension",
+  "main": "background.js",
+  "scripts": {
+    "start": "bash setup.sh",
+    "build": "bash setup.sh"
+  },
+  "keywords": [
+    "grammar",
+    "writing",
+    "english",
+    "browser-extension",
+    "openai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+} 
