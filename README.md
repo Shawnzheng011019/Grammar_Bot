@@ -10,6 +10,23 @@ A browser extension for checking and improving English grammar and writing style
 - **Chinglish Detection**: Identifies and corrects English expressions influenced by Chinese language patterns
 - **Tone Adjustment**: Rewrites text with professional, concise, confident, or friendly tones
 
+## Demos
+
+### Grammar Check
+![Grammar Check Demo](images/grammarcheck.gif)
+
+### Sentence Shortening
+![Sentence Shortening Demo](images/shorten.gif)
+
+### Sentence Expansion
+![Sentence Expansion Demo](images/expand.gif)
+
+### Chinglish Detection
+![Chinglish Detection Demo](images/chinglishdetection.gif)
+
+### Tone Adjustment
+![Tone Adjustment Demo](images/tone.gif)
+
 ## Installation
 
 ### Chrome/Edge/Brave
@@ -88,6 +105,12 @@ If you experience problems with the "Apply" button not replacing text:
 ### Test Page
 
 A `test.html` file is included in the extension's directory. Open this file in your browser to test the extension on different input types.
+
+## Known Issues
+
+- Some complex text editors (like Google Docs or custom CMS editors) may not work with the automatic text replacement. In these cases, use the "Copy" button instead.
+- Web applications with strong Content Security Policies may block some extension functionality.
+- The extension performs best on standard HTML input fields, textareas, and contentEditable elements.
 
 ## Development Notes
 
