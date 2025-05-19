@@ -116,15 +116,16 @@ function processText(text, mode, tone) {
 
   // Show loading message
   showLoadingMessage();
-
+  
+  // Set API timeout handling
   const apiTimeout = setTimeout(() => {
     if (suggestionContainer && suggestionContainer.querySelector('.grammar-bot-loading')) {
-      console.log('API请求超时');
+      console.log('API request timeout');
       handleResponse({
-        error: '请求超时，可能是API服务器响应慢或网络问题，请稍后重试。如果问题持续存在，请检查您的API密钥。'
+        error: 'Request timeout, please check your API key and try again.'
       });
     }
-  }, 30000); // 30秒超时
+  }, 30000); // 30 seconds timeout
   
   // Send request to the background script
   chrome.runtime.sendMessage({
@@ -132,7 +133,7 @@ function processText(text, mode, tone) {
     systemPrompt: systemPrompt,
     userPrompt: userPrompt
   }, response => {
-    // 清除超时计时器
+    // Clear the timeout timer
     clearTimeout(apiTimeout);
     
     // Handle the response in a callback
