@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrammarBot Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2 {
+            color: #2563eb;
+        }
+        
+        textarea, 
+        .editable {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-family: inherit;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 100px;
+        }
+        
+        .editable {
+            min-height: 100px;
+            background-color: white;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-family: inherit;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>GrammarBot Test Page</h1>
+    <p>This page contains different types of text inputs to test the GrammarBot extension.</p>
+    
+    <section>
+        <h2>Grammar Check Example</h2>
+        <p>Right-click on the text and select "GrammarBot &gt; Grammar Check" to test grammar checking.</p>
+        <textarea>I have recieved your email yesterday and I will response to it as soon as possible. Me and my team are working hardly to solve this issue.</textarea>
+    </section>
+    
+    <section>
+        <h2>Chinglish Detection Example</h2>
+        <p>Right-click on the text and select "GrammarBot &gt; Detect Chinglish" to test Chinglish detection.</p>
+        <div class="editable" contenteditable="true">I very like to use this product. It is good for use. However, I think the price is a little expensive. I already use it for long time. I will introduce this to my friends.</div>
+    </section>
+    
+    <section>
+        <h2>Shorten Example</h2>
+        <p>Right-click on the text and select "GrammarBot &gt; Shorten" to make it more concise.</p>
+        <textarea>The aforementioned document contains a comprehensive and detailed analysis of the various factors that contribute to the overall performance of our product in numerous different market segments, including but not limited to the primary target demographic as well as several peripheral customer bases that we have identified as potential areas for future growth and expansion of our brand presence.</textarea>
+    </section>
+    
+    <section>
+        <h2>Expand Example</h2>
+        <p>Right-click on the text and select "GrammarBot &gt; Expand" to add more details.</p>
+        <div class="editable" contenteditable="true">The new product exceeded sales expectations.</div>
+    </section>
+    
+    <section>
+        <h2>Tone Adjustment Example</h2>
+        <p>Right-click on the text and select "GrammarBot &gt; Change Tone" and choose a tone.</p>
+        <input type="text" value="I'm not sure if this will work for your needs, but maybe you could try it and see what happens?" />
+    </section>
+</body>
+</html> 
