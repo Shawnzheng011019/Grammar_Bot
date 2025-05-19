@@ -89,12 +89,6 @@ If you experience problems with the "Apply" button not replacing text:
 
 A `test.html` file is included in the extension's directory. Open this file in your browser to test the extension on different input types.
 
-## Known Issues
-
-- Some complex text editors (like Google Docs or custom CMS editors) may not work with the automatic text replacement. In these cases, use the "Copy" button instead.
-- Web applications with strong Content Security Policies may block some extension functionality.
-- The extension performs best on standard HTML input fields, textareas, and contentEditable elements.
-
 ## Development Notes
 
 To improve text replacement in complex editors:
