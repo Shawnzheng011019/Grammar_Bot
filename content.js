@@ -18,14 +18,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 function processText(text, mode, tone) {
   console.log('Processing text with mode:', mode, 'tone:', tone);
   console.log('Text length:', text.length);
-  
-  // 保存原始文本
   originalText = text;
-  
-  // 记录当前处理模式
   currentMode = mode;
-  
-  // 尝试更精确地保存选择区域和活动元素
   saveSelectionState();
   
   // Generate the appropriate system prompt for each mode
@@ -122,10 +116,8 @@ function processText(text, mode, tone) {
 
   // Show loading message
   showLoadingMessage();
-  
-  // 设置API超时处理
+
   const apiTimeout = setTimeout(() => {
-    // 检查是否还在加载状态
     if (suggestionContainer && suggestionContainer.querySelector('.grammar-bot-loading')) {
       console.log('API请求超时');
       handleResponse({
@@ -1305,9 +1297,9 @@ function createInlineCorrections(textContent, corrections, range, mode) {
               
               // Ensure the sidebar is not removed when there is a sidebar
               if (inlineMarker) {
-                showMessage(`Applied change: "${correction.original.substring(0, 15)}${correction.original.length > 15 ? '...' : ''}"`, true, 2000, false);
+                showMessage(`Applied change: "${correction.original.substring(0, 15)}${correction.original.length > 15 ? '...' : ''}"`, true, 5000, false);
               } else {
-                showMessage(`Applied change: "${correction.original}" → "${correction.replacement}"`, true, 2000);
+                showMessage(`Applied change: "${correction.original}" → "${correction.replacement}"`, true, 5000);
               }
               
               // Update the card UI to show the applied status
@@ -1753,16 +1745,16 @@ function showMessage(message, isSuccess = true, duration = 4000, removeInline = 
 
 // Handle API response
 function handleResponse(response) {
-  // 清除加载超时
+  // Clear the loading timeout
   if (suggestionContainer && suggestionContainer.loadingTimeout) {
     clearTimeout(suggestionContainer.loadingTimeout);
     suggestionContainer.loadingTimeout = null;
   }
   
-  // 确保清除加载UI
+  // Ensure the loading UI is cleared
   const loadingUI = suggestionContainer && suggestionContainer.querySelector('.grammar-bot-loading');
   if (loadingUI) {
-    // 转换为完成状态而不是直接移除
+    // Convert to completed state instead of removing
     loadingUI.innerHTML = `
       <div style="width: 32px; height: 32px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1773,12 +1765,14 @@ function handleResponse(response) {
       <div style="text-align: center; color: #16a34a; font-weight: 500;">Text processing completed</div>
     `;
     
-    // 2秒后关闭弹窗
-    setTimeout(() => {
-      if (suggestionContainer && !inlineMarker) {
-        removeSuggestionContainer();
-      }
-    }, 2000);
+    // Close the popup after 2 seconds (only if not a rewrite mode that shows its own persistent UI)
+    if (currentMode !== 'shorten' && currentMode !== 'expand' && currentMode !== 'tone') {
+      setTimeout(() => {
+        if (suggestionContainer && !inlineMarker) {
+          removeSuggestionContainer();
+        }
+      }, 2000);
+    }
   }
   
   if (response.error) {
@@ -2107,6 +2101,7 @@ function showRewrite(rewrittenText) {
         }, 2000);
         
         showMessage("Text copied to clipboard!", true, 2000);
+        removeSuggestionContainer();
       })
       .catch(err => {
         console.error('Failed to copy text: ', err);
@@ -2132,6 +2127,7 @@ function showRewrite(rewrittenText) {
           }, 2000);
           
           showMessage("Text copied to clipboard!", true, 2000);
+          removeSuggestionContainer();
         } catch (fallbackErr) {
           console.error('Fallback copy also failed:', fallbackErr);
           showMessage("Unable to copy text", false, 3000);
